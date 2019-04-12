@@ -13,6 +13,9 @@ class NewsItemTile extends StatelessWidget {
     return Column(
       children: <Widget>[
         ListTile(
+          onTap: () {
+            Navigator.of(context).pushNamed('/details', arguments: item);
+          },
           title: Text(item.title),
           subtitle: Text('${item.score} upvotes'),
           trailing: Column(
