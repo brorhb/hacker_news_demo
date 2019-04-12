@@ -10,6 +10,9 @@ class App extends StatelessWidget {
     return StoriesProvider(
       child: CommentsProvider(
         child: MaterialApp(
+          theme: ThemeData(
+            primaryColor: Colors.deepOrange
+          ),
           debugShowCheckedModeBanner: false,
           title: 'News',
           onGenerateRoute: routes
@@ -24,6 +27,8 @@ Route routes (RouteSettings settings) {
     case '/':
       return MaterialPageRoute(
         builder: (BuildContext context) {
+          final StoriesBloc bloc = StoriesProvider.of(context);
+          bloc.fetchTopIds();
           return NewsList();
         }
       );
