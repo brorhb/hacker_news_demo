@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:hacker_news/src/models/item_model.dart';
 import 'package:flutter/material.dart';
-import 'package:hacker_news/src/widgets/placeholder_item_tile.dart';
+import 'package:hacker_news/src/widgets/comment_placeholder.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 class Comment extends StatelessWidget {
@@ -16,7 +16,7 @@ class Comment extends StatelessWidget {
     return FutureBuilder(
       future: itemMap[itemId],
       builder: (BuildContext context, AsyncSnapshot<ItemModel> snapshot) {
-        if (!snapshot.hasData) return PlaceholderTile();
+        if (!snapshot.hasData) return CommentPlaceholder(level);
         if (snapshot.data.deleted) return Container(
           margin: EdgeInsets.only(left: getMargin(level ?? 1)),
           padding: EdgeInsets.only(top: 8, bottom: 8, left: 12),
